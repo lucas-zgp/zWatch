@@ -1,0 +1,9 @@
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [[No Variations]] of Project [zWatch.PrjPCB]
+
+
+Files Generated   : 0
+Documents Printed : 0
+
+Finished Output Generation At 15:03:09 On 2021-6-15
