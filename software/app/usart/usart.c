@@ -73,13 +73,11 @@ void usart1_proxy_init()
 /*串口发送函数*/
 void usart_transmit(uint8_t *data_buffer,uint32_t buffer_size)
 {
-  taskENTER_CRITICAL();
   for (size_t i = 0; i < buffer_size; i++)
   {
     USART_SendData(USART1,data_buffer[i]);
     while(USART_GetFlagStatus(USART1, USART_FLAG_TDE) == RESET);
   }
-  taskEXIT_CRITICAL();
 }
 
 /*printf 重映射*/

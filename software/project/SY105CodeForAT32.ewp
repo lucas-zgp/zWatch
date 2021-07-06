@@ -359,8 +359,11 @@
                     <state>$PROJ_DIR$\..\freertos</state>
                     <state>$PROJ_DIR$\..\freertos\include</state>
                     <state>$PROJ_DIR$\..\freertos\portable</state>
-                    <state>$PROJ_DIR$\..\app\inc</state>
+                    <state>$PROJ_DIR$\..\app\gpio</state>
                     <state>$PROJ_DIR$\..\user</state>
+                    <state>$PROJ_DIR$\..\app\usart</state>
+                    <state>$PROJ_DIR$\..\app\lcd</state>
+                    <state>$PROJ_DIR$\..\app\delay</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2089,39 +2092,21 @@
         </settings>
     </configuration>
     <group>
-        <name>freertos</name>
+        <name>app</name>
         <file>
-            <name>$PROJ_DIR$\..\freertos\croutine.c</name>
+            <name>$PROJ_DIR$\..\app\delay\delay.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\freertos\event_groups.c</name>
+            <name>$PROJ_DIR$\..\app\gpio\gpio.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\freertos\include\FreeRTOSConfig.h</name>
+            <name>$PROJ_DIR$\..\app\lcd\lcd.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\freertos\portable\heap_4.c</name>
+            <name>$PROJ_DIR$\..\app\lcd\lcd_init.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\freertos\list.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\freertos\portable\port.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\freertos\portable\portasm.s</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\freertos\queue.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\freertos\stream_buffer.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\freertos\tasks.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\freertos\timers.c</name>
+            <name>$PROJ_DIR$\..\app\usart\usart.c</name>
         </file>
     </group>
     <group>
@@ -2209,12 +2194,39 @@
         </file>
     </group>
     <group>
-        <name>app</name>
+        <name>freertos</name>
         <file>
-            <name>$PROJ_DIR$\..\app\src\gpio.c</name>
+            <name>$PROJ_DIR$\..\freertos\croutine.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\app\src\usart.c</name>
+            <name>$PROJ_DIR$\..\freertos\event_groups.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\include\FreeRTOSConfig.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\portable\heap_4.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\list.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\portable\port.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\portable\portasm.s</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\queue.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\stream_buffer.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\tasks.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\freertos\timers.c</name>
         </file>
     </group>
     <group>
