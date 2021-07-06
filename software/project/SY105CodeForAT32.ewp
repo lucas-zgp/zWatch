@@ -364,6 +364,7 @@
                     <state>$PROJ_DIR$\..\app\usart</state>
                     <state>$PROJ_DIR$\..\app\lcd</state>
                     <state>$PROJ_DIR$\..\app\delay</state>
+                    <state>$PROJ_DIR$\..\app\bm8563</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2093,6 +2094,9 @@
     </configuration>
     <group>
         <name>app</name>
+        <file>
+            <name>$PROJ_DIR$\..\app\bm8563\bm8563.c</name>
+        </file>
         <file>
             <name>$PROJ_DIR$\..\app\delay\delay.c</name>
         </file>

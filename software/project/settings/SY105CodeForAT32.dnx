@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <settings>
     <DebugChecksum>
-        <Checksum>2617098648</Checksum>
+        <Checksum>819912936</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -108,11 +108,26 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
+    <DisassembleMode>
+        <mode>0</mode>
+    </DisassembleMode>
+    <Breakpoints2>
+        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\trace_recorder\src\trcKernelPort.c}.257.1" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\protocol\tuya_zigbee\src\tuya_zigbee_base_protocol.c}.1.1" 0 0 1 "" 0 "" 0</Bp1>
+        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\app\src\somebody_judgment_task.c}.69.3" 0 0 1 "" 0 "" 0</Bp2>
+        <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\at32f4xx_it.c}.42.3" 0 0 1 "" 0 "" 0</Bp3>
+        <Count>4</Count>
+    </Breakpoints2>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
         <Category>_ 0</Category>
     </LogFile>
+    <Aliases>
+        <A0>_ "D:\Jenkins\jobs\auxCMSIS\workspace\arm\auxCMSIS\stage\build_dsp_lib\arm\CMSIS\DSP\Source\StatisticsFunctions\arm_max_f32.c" ""</A0>
+        <Count>1</Count>
+        <SuppressDialog>0</SuppressDialog>
+    </Aliases>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>1</Mode>
@@ -131,21 +146,6 @@
         <Probe0>I0</Probe0>
         <ProbeSetup0>2 1 1 2 0 0</ProbeSetup0>
     </PowerProbe>
-    <DisassembleMode>
-        <mode>0</mode>
-    </DisassembleMode>
-    <Breakpoints2>
-        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\trace_recorder\src\trcKernelPort.c}.257.1" 0 0 1 "" 0 "" 0</Bp0>
-        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\protocol\tuya_zigbee\src\tuya_zigbee_base_protocol.c}.1.1" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\app\src\somebody_judgment_task.c}.69.3" 0 0 1 "" 0 "" 0</Bp2>
-        <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\at32f4xx_it.c}.42.3" 0 0 1 "" 0 "" 0</Bp3>
-        <Count>4</Count>
-    </Breakpoints2>
-    <Aliases>
-        <A0>_ "D:\Jenkins\jobs\auxCMSIS\workspace\arm\auxCMSIS\stage\build_dsp_lib\arm\CMSIS\DSP\Source\StatisticsFunctions\arm_max_f32.c" ""</A0>
-        <Count>1</Count>
-        <SuppressDialog>0</SuppressDialog>
-    </Aliases>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>

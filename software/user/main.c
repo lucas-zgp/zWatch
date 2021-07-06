@@ -17,39 +17,56 @@
 #include "lcd_init.h"
 #include "lcd.h"
 #include "pic.h"
+#include "bm8563.h"
+#include "delay.h"
 
 int main(void)
 {
-  unsigned char i,j;
-	float t=0;
+
+  unsigned char i, j;
+  float t = 0;
 
   __set_PRIMASK(0);
   SystemInit(); /*时钟初始化*/
 
   SCB->VTOR = FLASH_BASE | 0x00000;
 
+  usart1_proxy_init();
   gpio_init();
 
   LCD_Init(); //LCD初始化
   LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
 
+  Set_Start_BM8563();
+
   while (1)
   {
-    LCD_ShowString(0, 40, "LCD_W:", RED, WHITE, 16, 0);
-    LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
-    LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
-    LCD_ShowIntNum(128, 40, LCD_H, 3, RED, WHITE, 16);
-    LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
-    LCD_ShowString(0, 70, "Increaseing Nun:", RED, WHITE, 16, 0);
-    LCD_ShowFloatNum1(128, 70, t, 4, RED, WHITE, 16);
-    t += 0.11;
-    for (j = 0; j < 3; j++)
+    do
     {
-      for (i = 0; i < 6; i++)
-      {
-        LCD_ShowPicture(40 * i, 120 + j * 40, 40, 40, gImage_1);
-      }
-    }
+      bm_status = iic_read_n_byte(0xa2, 0x02, trdata, 0x07); //测试读取时间、日期
+    } while (bm_status != 0);
+    datajust();
+    Bcd2asc();
+    // printf_sz_hex(asc, 14); //打印时间、日期
+
+    usart_transmit(trdata, 0x07);
+
+    delay_ms(1000);
+    // LCD_ShowString(0, 40, "LCD_W:", RED, WHITE, 16, 0);
+    // LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
+    // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+    // LCD_ShowIntNum(128, 40, LCD_H, 3, RED, WHITE, 16);
+    // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+    // LCD_ShowString(0, 70, "Increaseing Nun:", RED, WHITE, 16, 0);
+    // LCD_ShowFloatNum1(128, 70, t, 4, RED, WHITE, 16);
+    // t += 0.11;
+    // for (j = 0; j < 3; j++)
+    // {
+    //   for (i = 0; i < 6; i++)
+    //   {
+    //     LCD_ShowPicture(40 * i, 120 + j * 40, 40, 40, gImage_1);
+    //   }
+    // }
   }
 }
 
