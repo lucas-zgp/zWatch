@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <settings>
     <DebugChecksum>
-        <Checksum>9054511</Checksum>
+        <Checksum>241326492</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -119,8 +119,7 @@
         <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\protocol\tuya_zigbee\src\tuya_zigbee_base_protocol.c}.1.1" 0 0 1 "" 0 "" 0</Bp1>
         <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\app\src\somebody_judgment_task.c}.69.3" 0 0 1 "" 0 "" 0</Bp2>
         <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\at32f4xx_it.c}.42.3" 0 0 1 "" 0 "" 0</Bp3>
-        <Bp4>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\gui\lvgl_driver\lv_port_disp.c}.109.5" 0 0 1 "" 0 "" 0</Bp4>
-        <Count>5</Count>
+        <Count>4</Count>
     </Breakpoints2>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>

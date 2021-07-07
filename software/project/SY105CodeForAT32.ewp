@@ -794,7 +794,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\config\linker\ArteryTek\AT32F403AxG.icf</state>
+                    <state>$PROJ_DIR$\SY105CodeForAT32.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
