@@ -261,7 +261,7 @@
                 </option>
                 <option>
                     <name>CCDiagSuppress</name>
-                    <state></state>
+                    <state>Pa082,Pe068,Pe111,Pa118</state>
                 </option>
                 <option>
                     <name>CCDiagRemark</name>
@@ -365,6 +365,11 @@
                     <state>$PROJ_DIR$\..\app\lcd</state>
                     <state>$PROJ_DIR$\..\app\delay</state>
                     <state>$PROJ_DIR$\..\app\bm8563</state>
+                    <state>$PROJ_DIR$\..\app\timer</state>
+                    <state>$PROJ_DIR$\..\gui</state>
+                    <state>$PROJ_DIR$\..\gui\lvgl</state>
+                    <state>$PROJ_DIR$\..\gui\lv_examples</state>
+                    <state>$PROJ_DIR$\..\gui\lvgl_driver</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2110,6 +2115,9 @@
             <name>$PROJ_DIR$\..\app\lcd\lcd_init.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\app\timer\timer.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\app\usart\usart.c</name>
         </file>
     </group>
@@ -2234,6 +2242,273 @@
         </file>
     </group>
     <group>
+        <name>gui</name>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_anim.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_arc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_area.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_async.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_bar.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_btn.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_btnm.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_calendar.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_canvas.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_cb.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_chart.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_circ.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_color.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_cont.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_ddlist.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_core\lv_disp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw_arc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw_basic.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw_img.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw_label.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw_line.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw_rect.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_draw_triangle.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_font\lv_font.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_font\lv_font_fmt_txt.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_font\lv_font_roboto_12.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_font\lv_font_roboto_16.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_font\lv_font_roboto_22.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_font\lv_font_roboto_28.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_font\lv_font_unscii_8.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_fs.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_gauge.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_gc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_core\lv_group.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_hal\lv_hal_disp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_hal\lv_hal_indev.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_hal\lv_hal_tick.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_img.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_img_cache.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_draw\lv_img_decoder.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_imgbtn.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_core\lv_indev.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_kb.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_label.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_led.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_line.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_list.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_ll.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_lmeter.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_log.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_math.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_mbox.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_mem.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_core\lv_obj.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_objx_templ.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_page.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl_driver\lv_port_disp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_preload.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_core\lv_refr.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_roller.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_slider.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_spinbox.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_core\lv_style.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_sw.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_ta.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_table.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_tabview.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_task.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_templ.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_alien.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_default.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_material.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_mono.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_nemo.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_night.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_templ.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_themes\lv_theme_zen.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_tileview.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_txt.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_misc\lv_utils.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lvgl\src\lv_objx\lv_win.c</name>
+        </file>
+    </group>
+    <group>
+        <name>gui_app</name>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lv_examples\lv_apps\demo\demo.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lv_examples\lv_apps\demo\img_bubble_pattern.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lv_examples\lv_tests\lv_test_theme\lv_test_theme_1.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\gui\lv_examples\lv_tests\lv_test_theme\lv_test_theme_2.c</name>
+        </file>
+    </group>
+    <group>
         <name>user</name>
         <file>
             <name>$PROJ_DIR$\..\user\at32f4xx_it.c</name>
@@ -2242,7 +2517,7 @@
             <name>$PROJ_DIR$\..\user\main.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\cmsis\startup_at32f403argt7.s</name>
+            <name>$PROJ_DIR$\..\cmsis\startup_at32f403acgu7.s</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\cmsis\system_at32f4xx.c</name>

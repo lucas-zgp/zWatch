@@ -19,6 +19,16 @@
 #include "pic.h"
 #include "bm8563.h"
 #include "delay.h"
+#include "timer.h"
+
+/*lvgl*/
+#include "lvgl.h"
+#include "lv_port_disp.h"
+#include "lv_apps\demo\demo.h"
+#include "lv_tests\lv_test_theme\lv_test_theme_1.h"
+#include "lv_tests\lv_test_theme\lv_test_theme_2.h"
+
+#define TEST_NUM 1 //1,2,3 分别对应三个演示例程
 
 int main(void)
 {
@@ -33,25 +43,27 @@ int main(void)
 
   usart1_proxy_init();
   gpio_init();
+  timer6_init();
 
   LCD_Init(); //LCD初始化
-  LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
+  // LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
 
-  Set_Start_BM8563();
+  lv_init();           /*lvgl 系统初始化*/
+  lv_port_disp_init(); /*lvgl 显示接口初始化,放在 lv_init()的后面*/
+
+  // Set_Start_BM8563();
+
+#if (TEST_NUM == 1)
+  demo_create();
+#elif (TEST_NUM == 2)
+  lv_test_theme_1(lv_theme_night_init(210, NULL));
+#else
+  lv_test_theme_2();
+#endif
 
   while (1)
   {
-    do
-    {
-      bm_status = iic_read_n_byte(0xa2, 0x02, trdata, 0x07); //测试读取时间、日期
-    } while (bm_status != 0);
-    datajust();
-    Bcd2asc();
-    // printf_sz_hex(asc, 14); //打印时间、日期
-
-    usart_transmit(trdata, 0x07);
-
-    delay_ms(1000);
+    lv_task_handler();
     // LCD_ShowString(0, 40, "LCD_W:", RED, WHITE, 16, 0);
     // LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
     // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
@@ -67,6 +79,18 @@ int main(void)
     //     LCD_ShowPicture(40 * i, 120 + j * 40, 40, 40, gImage_1);
     //   }
     // }
+
+    // do
+    // {
+    //   bm_status = iic_read_n_byte(0xa2, 0x02, trdata, 0x07); //测试读取时间、日期
+    // } while (bm_status != 0);
+    // datajust();
+    // Bcd2asc();
+    // // printf_sz_hex(asc, 14); //打印时间、日期
+
+    // usart_transmit(trdata, 0x07);
+
+    // delay_ms(1000);
   }
 }
 

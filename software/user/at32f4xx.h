@@ -114,8 +114,8 @@ extern "C" {
 /* #define AT32F403ACEU7 */   /*!< AT32F403ACEU7: QFN48, XL-density devices: AT32F403ACEU7 */
 /* #define AT32F403AVGT7 */   /*!< AT32F403AVGT7: LQFP100, XL-density devices: AT32F403AVGT7 */
 /* #define AT32F403ACGT7 */   /*!< AT32F403ACGT7: LQFP48, XL-density devices: AT32F403ACGT7 */
-#define AT32F403ARGT7   /*!< AT32F403ARGT7: LQFP64, XL-density devices: AT32F403ARGT7 */
-/* #define AT32F403ACGU7 */   /*!< AT32F403ACGU7: QFN48, XL-density devices: AT32F403ACGU7 */
+/* #define AT32F403ARGT7 */  /*!< AT32F403ARGT7: LQFP64, XL-density devices: AT32F403ARGT7 */
+ #define AT32F403ACGU7   /*!< AT32F403ACGU7: QFN48, XL-density devices: AT32F403ACGU7 */
 
 /* #define AT32F421C4T7 */    /*!< AT32F421C4T7: LQFP48, Low density devices: AT32F421C4T7 */
 /* #define AT32F421C6T7 */    /*!< AT32F421C6T7: LQFP48, Low density devices: AT32F421C6T7 */
@@ -300,7 +300,7 @@ extern "C" {
 #define __MPU_PRESENT             1     /*!< MPU present                                  */
 #define __NVIC_PRIO_BITS          4     /*!< AT32 uses 4 Bits for the Priority Levels     */
 #define __Vendor_SysTickConfig    0     /*!< Set to 1 if different SysTick Config is used */
-//#define __FPU_PRESENT             1U    /*!< FPU present*/ /*改为使用IAR IDE定义*/
+//#define __FPU_PRESENT             1U    /*!< FPU present*/ /*锟斤拷为使锟斤拷IAR IDE锟斤拷锟斤拷*/
 
 /**
  * @brief at32f4xx Interrupt Number Definition, according to the selected device
