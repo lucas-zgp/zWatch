@@ -67,8 +67,8 @@ void lv_port_disp_init(void)
 
     /* Example for 1) */
     static lv_disp_buf_t disp_buf;
-    static lv_color_t color_buf[LV_HOR_RES_MAX * 320]; //显示缓冲区,静态的 sram
-    lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * 320);
+    static lv_color_t color_buf[240 * 30]; //显示缓冲区,静态的 sram
+    lv_disp_buf_init(&disp_buf, color_buf, NULL, 240 * 30);
 
     /*-----------------------------------
      * Register the display in LittlevGL

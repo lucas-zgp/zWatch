@@ -28,7 +28,7 @@
 #include "lv_tests\lv_test_theme\lv_test_theme_1.h"
 #include "lv_tests\lv_test_theme\lv_test_theme_2.h"
 
-#define TEST_NUM 2 //1,2,3 分别对应三个演示例程
+#define TEST_NUM 3 //1,2,3 分别对应三个演示例程
 
 int main(void)
 {
@@ -66,6 +66,7 @@ int main(void)
   while (1)
   {
     lv_task_handler();
+    // printf("123\r\n");
     // LCD_ShowString(0, 40, "LCD_W:", RED, WHITE, 16, 0);
     // LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
     // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);

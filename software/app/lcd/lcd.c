@@ -2,6 +2,7 @@
 #include "lcd_init.h"
 #include "lcdfont.h"
 #include "delay.h"
+#include "usart.h"
 
 /******************************************************************************
       函数说明：在指定区域填充颜色
@@ -135,7 +136,6 @@ void Draw_Circle(unsigned short int x0, unsigned short int y0, unsigned char r, 
 		}
 	}
 }
-
 
 /******************************************************************************
       函数说明：显示单个字符
@@ -317,18 +317,37 @@ void LCD_ShowPicture(unsigned short int x, unsigned short int y, unsigned short 
 	}
 }
 
-void LCD_ShowPicture_1(unsigned short int x, unsigned short int y, unsigned short int length, unsigned short int width,
-					   unsigned short int pic[])
+// void LCD_ShowPicture_1(unsigned short int x, unsigned short int y,
+// 						unsigned short int length, unsigned short int width,
+// 					   unsigned short int pic[])
+void LCD_ShowPicture_1(u16 sx, u16 sy, u16 ex, u16 ey, u16 *color)
 {
+	// unsigned short int i, j;
+	// unsigned int k = 0;
+	// LCD_Address_Set(x, y, length, width);
+	// for (i = 0; i < length; i++)
+	// {
+	// 	for (j = 0; j < width; j++)
+	// 	{
+	// 		LCD_WR_DATA(pic[k]);
+	// 		k++;
+	// 	}
+	// }
+
+	LCD_Address_Set(sx, sy, ex, ey);
+	unsigned short int height, width;
 	unsigned short int i, j;
-	unsigned int k = 0;
-	LCD_Address_Set(x, y, length, width);
-	for (i = 0; i < length; i++)
+	width = ex - sx + 1;  //得到填充的宽度
+	height = ey - sy + 1; //高度
+
+	printf("%d %d %d %d %d %d\r\n", sx, sy, ex, ey, width, height);
+
+	for (i = 0; i < height; i++)
 	{
+		// LCD_SetCursor(sx, sy + i); //设置光标位置
+		// LCD_WriteRAM_Prepare();	   //开始写入GRAM
 		for (j = 0; j < width; j++)
-		{
-			LCD_WR_DATA(pic[k]);
-			k++;
-		}
+			LCD_WR_DATA(color[i * width + j]);
+		// LCD->LCD_RAM = color[i * width + j]; //写入数据
 	}
 }
