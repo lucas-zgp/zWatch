@@ -45,17 +45,18 @@ int main(void)
   gpio_init();
   timer6_init();
 
+  spi_init();
   LCD_Init(); //LCD初始化
 
-  LCD_Fill(0, 0, LCD_W, LCD_H, GRAYBLUE);
+  // LCD_Fill(0, 0, LCD_W, LCD_H, GRAYBLUE);
 
-  // lv_init();           /*lvgl 系统初始化*/
-  // lv_port_disp_init(); /*lvgl 显示接口初始化,放在 lv_init()的后面*/
+  lv_init();           /*lvgl 系统初始化*/
+  lv_port_disp_init(); /*lvgl 显示接口初始化,放在 lv_init()的后面*/
 
   // Set_Start_BM8563();
 
 #if (TEST_NUM == 1)
-  // demo_create();
+  demo_create();
 #elif (TEST_NUM == 2)
   lv_test_theme_1(lv_theme_night_init(210, NULL));
 #else
@@ -64,14 +65,27 @@ int main(void)
 
   while (1)
   {
-    // lv_task_handler();
-    LCD_ShowString(0, 40, "LCD_W:", RED, WHITE, 16, 0);
-    LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
-    LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
-    LCD_ShowIntNum(128, 40, LCD_H, 3, RED, WHITE, 16);
-    LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
-    LCD_ShowString(0, 70, "Increaseing Nun:", RED, WHITE, 16, 0);
-    LCD_ShowFloatNum1(128, 70, t, 4, RED, WHITE, 16);
+    lv_task_handler();
+    // LCD_ShowString(0, 40, "LCD_W:", RED, WHITE, 16, 0);
+    // LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
+    // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+    // LCD_ShowIntNum(128, 40, LCD_H, 3, RED, WHITE, 16);
+    // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+    // LCD_ShowString(0, 70, "Increaseing Nun:", RED, WHITE, 16, 0);
+    // LCD_ShowFloatNum1(128, 70, t, 4, RED, WHITE, 16);
+
+    // LCD_Fill(0, 0, LCD_W, LCD_H, GRAYBLUE);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, LIGHTGREEN);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, BROWN);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, BLUE);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, MAGENTA);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, RED);
+    // delay_ms(1000);
     // t += 0.11;
     // for (j = 0; j < 3; j++)
     // {

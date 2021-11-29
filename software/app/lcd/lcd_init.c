@@ -1,5 +1,6 @@
 #include "lcd_init.h"
 #include "delay.h"
+#include "spi.h"
 
 void LCD_GPIO_Init(void)
 {
@@ -8,10 +9,10 @@ void LCD_GPIO_Init(void)
 	GPIO_InitType GPIO_InitStructure;
 	GPIO_StructInit(&GPIO_InitStructure);
 
-	GPIO_InitStructure.GPIO_Pins = GPIO_Pins_4 | GPIO_Pins_5 | GPIO_Pins_6 | GPIO_Pins_7 | GPIO_Pins_8;
+	GPIO_InitStructure.GPIO_Pins = GPIO_Pins_4 | GPIO_Pins_6 | GPIO_Pins_8;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT_PP;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
-	GPIO_WriteBit(GPIOA, GPIO_Pins_4 | GPIO_Pins_5 | GPIO_Pins_6 | GPIO_Pins_7 | GPIO_Pins_8, Bit_SET);
+	GPIO_WriteBit(GPIOA, GPIO_Pins_4 | GPIO_Pins_6 | GPIO_Pins_8, Bit_SET);
 }
 
 /******************************************************************************
@@ -21,23 +22,24 @@ void LCD_GPIO_Init(void)
 ******************************************************************************/
 void LCD_Writ_Bus(unsigned char dat)
 {
-	unsigned char i;
-	LCD_CS_Clr();
-	for (i = 0; i < 8; i++)
-	{
-		LCD_SCLK_Clr();
-		if (dat & 0x80)
-		{
-			LCD_MOSI_Set();
-		}
-		else
-		{
-			LCD_MOSI_Clr();
-		}
-		LCD_SCLK_Set();
-		dat <<= 1;
-	}
-	LCD_CS_Set();
+	spi_read_write_byte(dat);
+	// unsigned char i;
+	// LCD_CS_Clr();
+	// for (i = 0; i < 8; i++)
+	// {
+	// 	LCD_SCLK_Clr();
+	// 	if (dat & 0x80)
+	// 	{
+	// 		LCD_MOSI_Set();
+	// 	}
+	// 	else
+	// 	{
+	// 		LCD_MOSI_Clr();
+	// 	}
+	// 	LCD_SCLK_Set();
+	// 	dat <<= 1;
+	// }
+	// LCD_CS_Set();
 }
 
 /******************************************************************************
@@ -126,14 +128,6 @@ void LCD_Address_Set(unsigned short int x1, unsigned short int y1, unsigned shor
 void LCD_Init(void)
 {
 	LCD_GPIO_Init(); //初始化GPIO
-
-	LCD_BLK_Clr(); //打开背光
-	delay_ms(1000);
-
-	LCD_RES_Clr(); //复位
-	delay_ms(100);
-	LCD_RES_Set();
-	delay_ms(100);
 
 	LCD_BLK_Set(); //打开背光
 	delay_ms(100);

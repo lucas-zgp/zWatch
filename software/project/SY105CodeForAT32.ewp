@@ -370,6 +370,7 @@
                     <state>$PROJ_DIR$\..\gui\lvgl</state>
                     <state>$PROJ_DIR$\..\gui\lv_examples</state>
                     <state>$PROJ_DIR$\..\gui\lvgl_driver</state>
+                    <state>$PROJ_DIR$\..\app\spi</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2113,6 +2114,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\app\lcd\lcd_init.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\app\spi\spi.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\app\timer\timer.c</name>
