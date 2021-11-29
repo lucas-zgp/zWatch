@@ -316,3 +316,19 @@ void LCD_ShowPicture(unsigned short int x, unsigned short int y, unsigned short 
 		}
 	}
 }
+
+void LCD_ShowPicture_1(unsigned short int x, unsigned short int y, unsigned short int length, unsigned short int width,
+					   unsigned short int pic[])
+{
+	unsigned short int i, j;
+	unsigned int k = 0;
+	LCD_Address_Set(x, y, length, width);
+	for (i = 0; i < length; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			LCD_WR_DATA(pic[k]);
+			k++;
+		}
+	}
+}

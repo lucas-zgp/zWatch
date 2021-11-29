@@ -67,8 +67,8 @@ void lv_port_disp_init(void)
 
     /* Example for 1) */
     static lv_disp_buf_t disp_buf;
-    static lv_color_t color_buf[LV_HOR_RES_MAX * 10]; //显示缓冲区,静态的 sram
-    lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * 10);
+    static lv_color_t color_buf[LV_HOR_RES_MAX * 320]; //显示缓冲区,静态的 sram
+    lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * 320);
 
     /*-----------------------------------
      * Register the display in LittlevGL
@@ -114,18 +114,18 @@ static void disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_
 {
     /*The most simple case (but also the slowest) to put all pixels to the screen one-by-one*/
 
-    int32_t x;
-    int32_t y;
-    for(y = area->y1; y <= area->y2; y++) {
-        for(x = area->x1; x <= area->x2; x++) {
-            /* Put a pixel to the display. For example: */
-            /* put_px(x, y, *color_p)*/
-            LCD_DrawPoint(x,y,color_p->full);
-            color_p++;
-        }
-    }
+    // int32_t x;
+    // int32_t y;
+    // for(y = area->y1; y <= area->y2; y++) {
+    //     for(x = area->x1; x <= area->x2; x++) {
+    //         /* Put a pixel to the display. For example: */
+    //         /* put_px(x, y, *color_p)*/
+    //         LCD_DrawPoint(x,y,color_p->full);
+    //         color_p++;
+    //     }
+    // }
 
-    // LCD_Fill(area->x1, area->y1, area->x2, area->y2, *(unsigned short int *)color_p);
+    LCD_ShowPicture_1(area->x1, area->y1, area->x2, area->y2, (unsigned short int *)color_p);
 
     /* IMPORTANT!!!
      * Inform the graphics library that you are ready with the flushing*/
