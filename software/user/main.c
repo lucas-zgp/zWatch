@@ -29,7 +29,7 @@
 #include "lv_tests\lv_test_theme\lv_test_theme_1.h"
 #include "lv_tests\lv_test_theme\lv_test_theme_2.h"
 
-#define TEST_NUM 1 //1,2,3 分别对应三个演示例程
+#define TEST_NUM 3 //1,2,3 分别对应三个演示例程
 
 int main(void)
 {
@@ -67,7 +67,47 @@ int main(void)
   while (1)
   {
     lv_task_handler();
-    delay_ms(10);
+    // printf("123\r\n");
+    // LCD_ShowString(0, 40, "LCD_W:", RED, WHITE, 16, 0);
+    // LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
+    // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+    // LCD_ShowIntNum(128, 40, LCD_H, 3, RED, WHITE, 16);
+    // LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+    // LCD_ShowString(0, 70, "Increaseing Nun:", RED, WHITE, 16, 0);
+    // LCD_ShowFloatNum1(128, 70, t, 4, RED, WHITE, 16);
+
+    // LCD_Fill(0, 0, LCD_W, LCD_H, GRAYBLUE);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, LIGHTGREEN);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, BROWN);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, BLUE);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, MAGENTA);
+    // delay_ms(1000);
+    // LCD_Fill(0, 0, LCD_W, LCD_H, RED);
+    // delay_ms(1000);
+    // t += 0.11;
+    // for (j = 0; j < 3; j++)
+    // {
+    //   for (i = 0; i < 6; i++)
+    //   {
+    //     LCD_ShowPicture(40 * i, 120 + j * 40, 40, 40, gImage_1);
+    //   }
+    // }
+
+    // do
+    // {
+    //   bm_status = iic_read_n_byte(0xa2, 0x02, trdata, 0x07); //测试读取时间、日期
+    // } while (bm_status != 0);
+    // datajust();
+    // Bcd2asc();
+    // // printf_sz_hex(asc, 14); //打印时间、日期
+
+    // usart_transmit(trdata, 0x07);
+
+    // delay_ms(1000);
   }
 }
 

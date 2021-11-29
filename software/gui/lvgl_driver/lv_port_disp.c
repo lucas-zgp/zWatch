@@ -86,22 +86,8 @@ void lv_port_disp_init(void)
     // lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * 30);
 
     static lv_disp_buf_t disp_buf;
-    static lv_color_t color_buf[LV_HOR_RES_MAX * LV_VER_RES_MAX / 2]; //显示缓冲区,静态的 sram
-    //显示缓冲区初始化
-    lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * LV_VER_RES_MAX / 2);
-
-
-    /* Example for 2) */
-    // static lv_disp_buf_t disp_buf;
-    // static lv_color_t buf_2_1[MY_DISP_HOR_RES * 20];                     /*A buffer for 10 rows*/
-    // static lv_color_t buf_2_2[MY_DISP_HOR_RES * 20];                     /*An other buffer for 10 rows*/
-    // lv_disp_buf_init(&disp_buf, buf_2_1, buf_2_2, MY_DISP_HOR_RES * 20); /*Initialize the display buffer*/
-
-    /* Example for 3) also set disp_drv.full_refresh = 1 below*/
-    // static lv_disp_buf_t disp_buf;
-    // static lv_color_t buf_3_1[MY_DISP_HOR_RES * MY_DISP_VER_RES];                         /*A screen sized buffer*/
-    // static lv_color_t buf_3_2[MY_DISP_HOR_RES * MY_DISP_VER_RES];                         /*An other screen sized buffer*/
-    // lv_disp_buf_init(&disp_buf, buf_3_1, buf_3_2, MY_DISP_VER_RES * LV_VER_RES_MAX); /*Initialize the display buffer*/
+    static lv_color_t color_buf[240 * 30]; //显示缓冲区,静态的 sram
+    lv_disp_buf_init(&disp_buf, color_buf, NULL, 240 * 30);
 
     /*-----------------------------------
      * Register the display in LVGL
@@ -209,19 +195,16 @@ static void disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_
 
     // int32_t x;
     // int32_t y;
-    // for (y = area->y1; y <= area->y2; y++)
-    // {
-    //     for (x = area->x1; x <= area->x2; x++)
-    //     {
+    // for(y = area->y1; y <= area->y2; y++) {
+    //     for(x = area->x1; x <= area->x2; x++) {
     //         /* Put a pixel to the display. For example: */
     //         /* put_px(x, y, *color_p)*/
-    //         LCD_DrawPoint(x, y, color_p->full);
+    //         LCD_DrawPoint(x,y,color_p->full);
     //         color_p++;
     //     }
     // }
-    LCD_ShowPicture_1(area->x1, area->y1, area->x2, area->y2, (unsigned short int *)color_p);
 
-    // LCD_Fill(area->x1, area->y1, area->x2, area->y2, *(unsigned short int *)color_p);
+    LCD_ShowPicture_1(area->x1, area->y1, area->x2, area->y2, (unsigned short int *)color_p);
 
     /* IMPORTANT!!!
      * Inform the graphics library that you are ready with the flushing*/

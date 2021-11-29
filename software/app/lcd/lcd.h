@@ -20,9 +20,9 @@ void LCD_ShowIntNum(unsigned short int x, unsigned short int y, unsigned short i
 void LCD_ShowFloatNum1(unsigned short int x, unsigned short int y, float num, unsigned char len, unsigned short int fc, unsigned short int bc, unsigned char sizey);            //显示两位小数变量
 
 void LCD_ShowPicture(unsigned short int x, unsigned short int y, unsigned short int length, unsigned short int width, const unsigned char pic[]); //显示图片
-void LCD_ShowPicture_1(unsigned short int x, unsigned short int y,
-					   unsigned short int length, unsigned short int width,
-					   unsigned short int *pic);
+void LCD_ShowPicture_1(unsigned short int x, unsigned short int y, unsigned short int length, unsigned short int width,
+                       unsigned short int pic[]);
+                       
 //画笔颜色
 #define WHITE 0xFFFF
 #define BLACK 0x0000
