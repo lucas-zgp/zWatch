@@ -18,7 +18,7 @@
 
 "--drv_interface_speed=auto" 
 
-"--jlink_initial_speed=1000" 
+"--jlink_initial_speed=10000" 
 
 "--jlink_reset_strategy=0,0" 
 

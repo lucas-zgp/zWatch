@@ -43,45 +43,78 @@ static void gpu_fill(lv_color_t *dest, uint32_t length, lv_color_t color);
 
 void lv_port_disp_init(void)
 {
+    /*-------------------------
+     * Initialize your display
+     * -----------------------*/
+    // disp_init(); /* 需要自己实现的显示初始化 */
+
     /*-----------------------------
      * Create a buffer for drawing
      *----------------------------*/
 
-    /* LittlevGL requires a buffer where it draws the objects. The buffer's has to be greater than 1 display row
+    /**
+     * LVGL requires a buffer where it internally draws the widgets.
+     * Later this buffer will passed to your display driver's `flush_cb` to copy its content to your display.
+     * The buffer has to be greater than 1 display row
      *
-     * There are three buffering configurations:
-     * 1. Create ONE buffer with some rows: 
-     *      LittlevGL will draw the display's content here and writes it to your display
-     * 
-     * 2. Create TWO buffer with some rows: 
-     *      LittlevGL will draw the display's content to a buffer and writes it your display.
+     * There are 3 buffering configurations:
+     * 1. Create ONE buffer:
+     *      LVGL will draw the display's content here and writes it to your display
+     *
+     * 2. Create TWO buffer:
+     *      LVGL will draw the display's content to a buffer and writes it your display.
      *      You should use DMA to write the buffer's content to the display.
-     *      It will enable LittlevGL to draw the next part of the screen to the other buffer while
+     *      It will enable LVGL to draw the next part of the screen to the other buffer while
      *      the data is being sent form the first buffer. It makes rendering and flushing parallel.
-     * 
-     * 3. Create TWO screen-sized buffer: 
-     *      Similar to 2) but the buffer have to be screen sized. When LittlevGL is ready it will give the
-     *      whole frame to display. This way you only need to change the frame buffer's address instead of
-     *      copying the pixels.
-     * */
+     *
+     * 3. Double buffering
+     *      Set 2 screens sized buffers and set disp_drv.full_refresh = 1.
+     *      This way LVGL will always provide the whole rendered screen in `flush_cb`
+     *      and you only need to change the frame buffer's address.
+     */
+
+#define MY_DISP_HOR_RES 1024
+#define MY_DISP_VER_RES 20
 
     /* Example for 1) */
+    //    static lv_disp_draw_buf_t draw_buf_dsc_1;
+    //    static lv_color_t buf_1[MY_DISP_HOR_RES * 10];                          /*A buffer for 10 rows*/
+    //    lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * 10);   /*Initialize the display buffer*/
+
+    // static lv_disp_buf_t disp_buf;
+    // static lv_color_t color_buf[LV_HOR_RES_MAX * 30]; //显示缓冲区,静态的 sram
+    // lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * 30);
+
     static lv_disp_buf_t disp_buf;
-    static lv_color_t color_buf[LV_HOR_RES_MAX * 10]; //显示缓冲区,静态的 sram
-    lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * 10);
+    static lv_color_t color_buf[LV_HOR_RES_MAX * LV_VER_RES_MAX / 2]; //显示缓冲区,静态的 sram
+    //显示缓冲区初始化
+    lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * LV_VER_RES_MAX / 2);
+
+
+    /* Example for 2) */
+    // static lv_disp_buf_t disp_buf;
+    // static lv_color_t buf_2_1[MY_DISP_HOR_RES * 20];                     /*A buffer for 10 rows*/
+    // static lv_color_t buf_2_2[MY_DISP_HOR_RES * 20];                     /*An other buffer for 10 rows*/
+    // lv_disp_buf_init(&disp_buf, buf_2_1, buf_2_2, MY_DISP_HOR_RES * 20); /*Initialize the display buffer*/
+
+    /* Example for 3) also set disp_drv.full_refresh = 1 below*/
+    // static lv_disp_buf_t disp_buf;
+    // static lv_color_t buf_3_1[MY_DISP_HOR_RES * MY_DISP_VER_RES];                         /*A screen sized buffer*/
+    // static lv_color_t buf_3_2[MY_DISP_HOR_RES * MY_DISP_VER_RES];                         /*An other screen sized buffer*/
+    // lv_disp_buf_init(&disp_buf, buf_3_1, buf_3_2, MY_DISP_VER_RES * LV_VER_RES_MAX); /*Initialize the display buffer*/
 
     /*-----------------------------------
-     * Register the display in LittlevGL
+     * Register the display in LVGL
      *----------------------------------*/
 
-    lv_disp_drv_t disp_drv;      /*Descriptor of a display driver*/
-    lv_disp_drv_init(&disp_drv); /*Basic initialization*/
+    static lv_disp_drv_t disp_drv; /*Descriptor of a display driver*/
+    lv_disp_drv_init(&disp_drv);   /*Basic initialization*/
 
     /*Set up the functions to access to your display*/
 
     /*Set the resolution of the display*/
-    disp_drv.hor_res = 240;
-    disp_drv.ver_res = 320;
+    disp_drv.hor_res = LV_HOR_RES_MAX;
+    disp_drv.ver_res = LV_VER_RES_MAX;
 
     /*Used to copy the buffer's content to the display*/
     disp_drv.flush_cb = disp_flush;
@@ -89,19 +122,79 @@ void lv_port_disp_init(void)
     /*Set a display buffer*/
     disp_drv.buffer = &disp_buf;
 
-#if LV_USE_GPU
-    /*Optionally add functions to access the GPU. (Only in buffered mode, LV_VDB_SIZE != 0)*/
+    /*Required for Example 3)*/
+    //disp_drv.full_refresh = 1
 
-    /*Blend two color array using opacity*/
-    disp_drv.gpu_blend = gpu_blend;
-
-    /*Fill a memory array with a color*/
-    disp_drv.gpu_fill = gpu_fill;
-#endif
+    /* Fill a memory array with a color if you have GPU.
+     * Note that, in lv_conf.h you can enable GPUs that has built-in support in LVGL.
+     * But if you have a different GPU you can use with this callback.*/
+    //disp_drv.gpu_fill_cb = gpu_fill;
 
     /*Finally register the driver*/
     lv_disp_drv_register(&disp_drv);
 }
+
+// void lv_port_disp_init(void)
+// {
+//     /*-----------------------------
+//      * Create a buffer for drawing
+//      *----------------------------*/
+
+//     /* LittlevGL requires a buffer where it draws the objects. The buffer's has to be greater than 1 display row
+//      *
+//      * There are three buffering configurations:
+//      * 1. Create ONE buffer with some rows:
+//      *      LittlevGL will draw the display's content here and writes it to your display
+//      *
+//      * 2. Create TWO buffer with some rows:
+//      *      LittlevGL will draw the display's content to a buffer and writes it your display.
+//      *      You should use DMA to write the buffer's content to the display.
+//      *      It will enable LittlevGL to draw the next part of the screen to the other buffer while
+//      *      the data is being sent form the first buffer. It makes rendering and flushing parallel.
+//      *
+//      * 3. Create TWO screen-sized buffer:
+//      *      Similar to 2) but the buffer have to be screen sized. When LittlevGL is ready it will give the
+//      *      whole frame to display. This way you only need to change the frame buffer's address instead of
+//      *      copying the pixels.
+//      * */
+
+//     /* Example for 1) */
+//     static lv_disp_buf_t disp_buf;
+//     static lv_color_t color_buf[LV_HOR_RES_MAX * 10]; //显示缓冲区,静态的 sram
+//     lv_disp_buf_init(&disp_buf, color_buf, NULL, LV_HOR_RES_MAX * 10);
+
+//     /*-----------------------------------
+//      * Register the display in LittlevGL
+//      *----------------------------------*/
+
+//     lv_disp_drv_t disp_drv;      /*Descriptor of a display driver*/
+//     lv_disp_drv_init(&disp_drv); /*Basic initialization*/
+
+//     /*Set up the functions to access to your display*/
+
+//     /*Set the resolution of the display*/
+//     disp_drv.hor_res = 240;
+//     disp_drv.ver_res = 320;
+
+//     /*Used to copy the buffer's content to the display*/
+//     disp_drv.flush_cb = disp_flush;
+
+//     /*Set a display buffer*/
+//     disp_drv.buffer = &disp_buf;
+
+// #if LV_USE_GPU
+//     /*Optionally add functions to access the GPU. (Only in buffered mode, LV_VDB_SIZE != 0)*/
+
+//     /*Blend two color array using opacity*/
+//     disp_drv.gpu_blend = gpu_blend;
+
+//     /*Fill a memory array with a color*/
+//     disp_drv.gpu_fill = gpu_fill;
+// #endif
+
+//     /*Finally register the driver*/
+//     lv_disp_drv_register(&disp_drv);
+// }
 
 /**********************
  *   STATIC FUNCTIONS
@@ -114,16 +207,19 @@ static void disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_
 {
     /*The most simple case (but also the slowest) to put all pixels to the screen one-by-one*/
 
-    int32_t x;
-    int32_t y;
-    for(y = area->y1; y <= area->y2; y++) {
-        for(x = area->x1; x <= area->x2; x++) {
-            /* Put a pixel to the display. For example: */
-            /* put_px(x, y, *color_p)*/
-            LCD_DrawPoint(x,y,color_p->full);
-            color_p++;
-        }
-    }
+    // int32_t x;
+    // int32_t y;
+    // for (y = area->y1; y <= area->y2; y++)
+    // {
+    //     for (x = area->x1; x <= area->x2; x++)
+    //     {
+    //         /* Put a pixel to the display. For example: */
+    //         /* put_px(x, y, *color_p)*/
+    //         LCD_DrawPoint(x, y, color_p->full);
+    //         color_p++;
+    //     }
+    // }
+    LCD_ShowPicture_1(area->x1, area->y1, area->x2, area->y2, (unsigned short int *)color_p);
 
     // LCD_Fill(area->x1, area->y1, area->x2, area->y2, *(unsigned short int *)color_p);
 

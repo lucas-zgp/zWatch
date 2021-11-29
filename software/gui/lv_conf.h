@@ -14,14 +14,18 @@
 /* clang-format off */
 
 #include <stdint.h>
-
+#include "spi.h"
+#include "lcd_init.h"
 /*====================
    Graphical settings
  *====================*/
 
 /* Maximal horizontal and vertical resolution to support by the library.*/
-#define LV_HOR_RES_MAX          (240)
-#define LV_VER_RES_MAX          (320)
+// #define LV_HOR_RES_MAX          (240)
+// #define LV_VER_RES_MAX          (320)
+
+#define LV_HOR_RES_MAX          (LCD_H)
+#define LV_VER_RES_MAX          (LCD_W)
 
 /* Color depth:
  * - 1:  1 byte per pixel

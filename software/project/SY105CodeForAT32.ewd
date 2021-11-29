@@ -44,7 +44,7 @@
                 </option>
                 <option>
                     <name>MemFile</name>
-                    <state>$TOOLKIT_DIR$\CONFIG\debugger\ArteryTek\AT32F403AxG.ddf</state>
+                    <state>$TOOLKIT_DIR$\CONFIG\debugger\ArteryTek\AT32F403AxG_v2.ddf</state>
                 </option>
                 <option>
                     <name>RunToEnable</name>
@@ -749,7 +749,7 @@
                 </option>
                 <option>
                     <name>JLinkInitialSpeed</name>
-                    <state>1000</state>
+                    <state>10000</state>
                 </option>
                 <option>
                     <name>CCDoJlinkMultiTarget</name>

@@ -10,7 +10,9 @@
 								color       要填充的颜色
       返回值：  无
 ******************************************************************************/
-void LCD_Fill(unsigned short int xsta, unsigned short int ysta, unsigned short int xend, unsigned short int yend, unsigned short int color)
+void LCD_Fill(unsigned short int xsta, unsigned short int ysta,
+			  unsigned short int xend, unsigned short int yend,
+			  unsigned short int color)
 {
 	unsigned short int i, j;
 	LCD_Address_Set(xsta, ysta, xend - 1, yend - 1); //设置显示范围
@@ -135,7 +137,6 @@ void Draw_Circle(unsigned short int x0, unsigned short int y0, unsigned char r, 
 		}
 	}
 }
-
 
 /******************************************************************************
       函数说明：显示单个字符
@@ -301,7 +302,9 @@ void LCD_ShowFloatNum1(unsigned short int x, unsigned short int y, float num, un
                 pic[]  图片数组    
       返回值：  无
 ******************************************************************************/
-void LCD_ShowPicture(unsigned short int x, unsigned short int y, unsigned short int length, unsigned short int width, const unsigned char pic[])
+void LCD_ShowPicture(unsigned short int x, unsigned short int y,
+					 unsigned short int length, unsigned short int width,
+					 const unsigned char pic[])
 {
 	unsigned short int i, j;
 	unsigned int k = 0;
@@ -316,3 +319,54 @@ void LCD_ShowPicture(unsigned short int x, unsigned short int y, unsigned short 
 		}
 	}
 }
+
+// //把指定区域的显示缓冲区写入屏幕
+// void LCD_Color_Fill(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t *buf)
+// {
+// 	uint16_t num;
+// 	num = (x1 - x0 + 1) * (y1 - y0 + 1);
+// 	LCD_Address_Set(x0, y0, x1, y1);
+// 	LCD_CS_OUT(0);
+
+// 	LCD_SPI->CR1 &= ~SPI_CR1_SPE; //失能SPI
+// 	LCD_SPI->CR1 |= SPI_CR1_DFF;  //设置SPI16位传输模式
+// 	LCD_SPI->CR1 |= SPI_CR1_SPE;  //使能SPI
+
+// 	LCD_DMA_Transfer16Bit((uint8_t *)buf, num, DMA_MEMINC_ENABLE); //启用DMA发送
+
+// 	//其余部分见HAL_SPI_TxCpltCallback()函数
+// }
+
+void LCD_ShowPicture_1(unsigned short int x, unsigned short int y,
+					   unsigned short int length, unsigned short int width,
+					   unsigned short int *pic)
+{
+	unsigned short int i, j;
+	unsigned int k = 0;
+	LCD_Address_Set(x, y, length, width);
+	for (i = 0; i < width; i++)
+	{
+		for (j = 0; j < length; j++)
+		{
+			LCD_WR_DATA(pic[k]);
+			// LCD_WR_DATA8(pic[k * 2]);
+			// LCD_WR_DATA8(pic[k * 2 + 1]);
+			k++;
+		}
+	}
+}
+
+// void LCD_Fill(unsigned short int xsta, unsigned short int ysta,
+// 			  unsigned short int xend, unsigned short int yend,
+// 			  unsigned short int color)
+// {
+// 	unsigned short int i, j;
+// 	LCD_Address_Set(xsta, ysta, xend - 1, yend - 1); //设置显示范围
+// 	for (i = ysta; i < yend; i++)
+// 	{
+// 		for (j = xsta; j < xend; j++)
+// 		{
+// 			LCD_WR_DATA(color);
+// 		}
+// 	}
+// }

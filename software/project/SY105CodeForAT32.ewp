@@ -2211,6 +2211,9 @@
     </group>
     <group>
         <name>freertos</name>
+        <excluded>
+            <configuration>Debug</configuration>
+        </excluded>
         <file>
             <name>$PROJ_DIR$\..\freertos\croutine.c</name>
         </file>
@@ -2507,9 +2510,15 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\gui\lv_examples\lv_tests\lv_test_theme\lv_test_theme_1.c</name>
+            <excluded>
+                <configuration>Debug</configuration>
+            </excluded>
         </file>
         <file>
             <name>$PROJ_DIR$\..\gui\lv_examples\lv_tests\lv_test_theme\lv_test_theme_2.c</name>
+            <excluded>
+                <configuration>Debug</configuration>
+            </excluded>
         </file>
     </group>
     <group>
