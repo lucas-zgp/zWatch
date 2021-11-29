@@ -3,20 +3,15 @@
 
 void LCD_GPIO_Init(void)
 {
-	RCC_APB2PeriphClockCmd(RCC_APB2PERIPH_GPIOA | RCC_APB2PERIPH_GPIOB, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2PERIPH_GPIOA, ENABLE);
 
 	GPIO_InitType GPIO_InitStructure;
 	GPIO_StructInit(&GPIO_InitStructure);
 
-	GPIO_InitStructure.GPIO_Pins = GPIO_Pins_6 | GPIO_Pins_7;
+	GPIO_InitStructure.GPIO_Pins = GPIO_Pins_4 | GPIO_Pins_5 | GPIO_Pins_6 | GPIO_Pins_7 | GPIO_Pins_8;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT_PP;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
-	GPIO_WriteBit(GPIOA, GPIO_Pins_6 | GPIO_Pins_7, Bit_SET);
-
-	GPIO_InitStructure.GPIO_Pins = GPIO_Pins_0 | GPIO_Pins_1 | GPIO_Pins_10 | GPIO_Pins_11;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT_PP;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	GPIO_WriteBit(GPIOB, GPIO_Pins_0 | GPIO_Pins_1 | GPIO_Pins_10 | GPIO_Pins_11, Bit_SET);
+	GPIO_WriteBit(GPIOA, GPIO_Pins_4 | GPIO_Pins_5 | GPIO_Pins_6 | GPIO_Pins_7 | GPIO_Pins_8, Bit_SET);
 }
 
 /******************************************************************************
@@ -131,6 +126,9 @@ void LCD_Address_Set(unsigned short int x1, unsigned short int y1, unsigned shor
 void LCD_Init(void)
 {
 	LCD_GPIO_Init(); //初始化GPIO
+
+	LCD_BLK_Clr(); //打开背光
+	delay_ms(1000);
 
 	LCD_RES_Clr(); //复位
 	delay_ms(100);

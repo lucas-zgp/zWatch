@@ -14,29 +14,29 @@
 
 //-----------------LCD端口定义----------------
 
-/*PB1*/
-#define LCD_SCLK_Clr() GPIO_WriteBit(GPIOB, GPIO_Pins_1, Bit_RESET); //SCL=SCLK
-#define LCD_SCLK_Set() GPIO_WriteBit(GPIOB, GPIO_Pins_1, Bit_SET)
-
-/*PB10*/
-#define LCD_MOSI_Clr() GPIO_WriteBit(GPIOB, GPIO_Pins_10, Bit_RESET); //SDA=MOSI
-#define LCD_MOSI_Set() GPIO_WriteBit(GPIOB, GPIO_Pins_10, Bit_SET)
-
-/*PB11*/
-#define LCD_RES_Clr() GPIO_WriteBit(GPIOB, GPIO_Pins_11, Bit_RESET); //RES
-#define LCD_RES_Set() GPIO_WriteBit(GPIOB, GPIO_Pins_11, Bit_SET)
+/*PA5*/
+#define LCD_SCLK_Clr() GPIO_WriteBit(GPIOA, GPIO_Pins_5, Bit_RESET); //SCL=SCLK
+#define LCD_SCLK_Set() GPIO_WriteBit(GPIOA, GPIO_Pins_5, Bit_SET)
 
 /*PA7*/
-#define LCD_DC_Clr() GPIO_WriteBit(GPIOA, GPIO_Pins_7, Bit_RESET); //DC
-#define LCD_DC_Set() GPIO_WriteBit(GPIOA, GPIO_Pins_7, Bit_SET)
+#define LCD_MOSI_Clr() GPIO_WriteBit(GPIOA, GPIO_Pins_7, Bit_RESET); //SDA=MOSI
+#define LCD_MOSI_Set() GPIO_WriteBit(GPIOA, GPIO_Pins_7, Bit_SET)
+
+/*PA6*/
+#define LCD_RES_Clr() GPIO_WriteBit(GPIOA, GPIO_Pins_6, Bit_RESET); //RES
+#define LCD_RES_Set() GPIO_WriteBit(GPIOA, GPIO_Pins_6, Bit_SET)
+
+/*PA4*/
+#define LCD_DC_Clr() GPIO_WriteBit(GPIOA, GPIO_Pins_4, Bit_RESET); //DC
+#define LCD_DC_Set() GPIO_WriteBit(GPIOA, GPIO_Pins_4, Bit_SET)
 
 /*PB0*/
 #define LCD_CS_Clr() GPIO_WriteBit(GPIOB, GPIO_Pins_0, Bit_RESET); //CS
 #define LCD_CS_Set() GPIO_WriteBit(GPIOB, GPIO_Pins_0, Bit_SET)
 
-/*PA6*/
-#define LCD_BLK_Clr() GPIO_WriteBit(GPIOA, GPIO_Pins_6, Bit_RESET); //BLK
-#define LCD_BLK_Set() GPIO_WriteBit(GPIOA, GPIO_Pins_6, Bit_SET)
+/*PA8*/
+#define LCD_BLK_Clr() GPIO_WriteBit(GPIOA, GPIO_Pins_8, Bit_RESET); //BLK
+#define LCD_BLK_Set() GPIO_WriteBit(GPIOA, GPIO_Pins_8, Bit_SET)
 
 void LCD_GPIO_Init(void);                                                                                         //初始化GPIO
 void LCD_Writ_Bus(unsigned char dat);                                                                             //模拟SPI时序

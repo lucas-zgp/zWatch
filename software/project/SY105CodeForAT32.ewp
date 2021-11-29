@@ -78,7 +78,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>AT32F403ACGU7	ArteryTek AT32F403ACGU7</state>
+                    <state>AT32F403ACGU7_v2	ArteryTek -AT32F403ACGU7</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -138,7 +138,7 @@
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>AT32F403ACGU7	ArteryTek AT32F403ACGU7</state>
+                    <state>AT32F403ACGU7_v2	ArteryTek -AT32F403ACGU7</state>
                 </option>
                 <option>
                     <name>FPU2</name>
@@ -346,7 +346,7 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>D:\OpenProject\zWatch\software\at32periph\inc</state>
+                    <state>$PROJ_DIR$\..\at32periph\inc</state>
                     <state>$PROJ_DIR$\..\app\inc</state>
                     <state>$PROJ_DIR$\..\cmsis\DSP_Lib</state>
                     <state>$PROJ_DIR$\..\cmsis</state>

@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\OpenProject\zWatch\software\project\settings\SY105CodeForAT32.Debug.general.xcl" --backend -f "D:\OpenProject\zWatch\software\project\settings\SY105CodeForAT32.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\Learning\zWatch\software\project\settings\SY105CodeForAT32.Debug.general.xcl" --backend -f "D:\Learning\zWatch\software\project\settings\SY105CodeForAT32.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\OpenProject\zWatch\software\project\settings\SY105CodeForAT32.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\OpenProject\zWatch\software\project\settings\SY105CodeForAT32.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "D:\Learning\zWatch\software\project\settings\SY105CodeForAT32.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Learning\zWatch\software\project\settings\SY105CodeForAT32.Debug.driver.xcl" 
 }

@@ -2,11 +2,11 @@
 
 "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\bin\armjlink2.dll" 
 
-"D:\OpenProject\zWatch\software\Firmware\SY105CodeForAT32.out" 
+"D:\Learning\zWatch\software\Firmware\SY105CodeForAT32.out" 
 
 --plugin="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\bin\armbat.dll" 
 
---device_macro="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\config\debugger\ArteryTek\AT32F4xx_XL.dmac" 
+--device_macro="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\config\debugger\ArteryTek\AT32F403Axx.dmac" 
 
 --flash_loader="C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\config\flashloader\ArteryTek\AT32F403A\AT32F403ARGT7\FlashAT32F403ARGT7.board" 
 

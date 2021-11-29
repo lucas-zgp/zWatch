@@ -6,7 +6,7 @@
 
 "-p" 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\CONFIG\debugger\ArteryTek\AT32F403AxG.ddf" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\CONFIG\debugger\ArteryTek\AT32F403AxG_v2.ddf" 
 
 "--drv_verify_download" 
 
