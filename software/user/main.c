@@ -29,7 +29,7 @@
 #include "lv_tests\lv_test_theme\lv_test_theme_1.h"
 #include "lv_tests\lv_test_theme\lv_test_theme_2.h"
 
-#define TEST_NUM 3 //1,2,3 分别对应三个演示例程
+#define TEST_NUM 1 //1,2,3 分别对应三个演示例程
 
 int main(void)
 {

@@ -99,8 +99,8 @@ void lv_port_disp_init(void)
     /*Set up the functions to access to your display*/
 
     /*Set the resolution of the display*/
-    disp_drv.hor_res = LV_HOR_RES_MAX;
-    disp_drv.ver_res = LV_VER_RES_MAX;
+    disp_drv.hor_res = 240;
+    disp_drv.ver_res = 320;
 
     /*Used to copy the buffer's content to the display*/
     disp_drv.flush_cb = disp_flush;
